@@ -38,8 +38,21 @@ app.use((req, res) => {
       <head>
         <meta charset="utf-8">
         <title>Isomorphic Redux Demo</title>
+        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="https://ttv-api.s3.amazonaws.com/twitch.min.js"></script>
         <script type="application/javascript">
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+        </script>
+        <script>
+          Twitch.init({clientId: 'jscjoak5tfki6r57wsehvqzhvwpr110'}, function(error, status) {
+            // the sdk is now loaded
+            console.log('status! ', status);
+            if (status.authenticated) {
+              // Already logged in, hide button
+              console.log('im in!');
+              $('.twitch-connect').hide()
+            }
+          });
         </script>
       </head>
       <body>
