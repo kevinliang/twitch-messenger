@@ -44,15 +44,18 @@ app.use((req, res) => {
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
         <script>
-          Twitch.init({clientId: 'jscjoak5tfki6r57wsehvqzhvwpr110'}, function(error, status) {
-            // the sdk is now loaded
-            console.log('status! ', status);
-            if (status.authenticated) {
-              // Already logged in, hide button
-              console.log('im in!');
-              $('.twitch-connect').hide()
-            }
+          $(function () {
+            Twitch.init({clientId: 'jscjoak5tfki6r57wsehvqzhvwpr110'}, function(error, status) {
+              // the sdk is now loaded
+              console.log('status! ', status);
+              if (status.authenticated) {
+                // Already logged in, hide button
+                console.log('im in!');
+                $('.twitch-connect').hide()
+              }
+            });
           });
+          
         </script>
       </head>
       <body>

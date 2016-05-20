@@ -1,12 +1,15 @@
 import React from 'react';
 export default class AppView extends React.Component {
 	componentDidMount() {
-    console.log('mounted');
     $('.twitch-connect').click(function() {
       Twitch.login({
         scope: ['user_read', 'channel_read']
       });
-    })
+    });
+
+    Twitch.events.addListener('auth.login', function() {
+      // user is logged in
+    });
 
   }
   render() {
